@@ -1,0 +1,56 @@
+﻿<Window x:Class="project_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:project_3"
+        mc:Ignorable="d"
+        Title="CGProj3" Height="550" Width="650"
+        MinHeight="550" MinWidth="625"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="1" Grid.Row="2">
+            <Grid Name="ImageGrid" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                SizeChanged="ImageGrid_SizeChanged">
+                <Image Name="MyImage" VerticalAlignment="Top" HorizontalAlignment="Left"        
+                MouseLeftButtonDown="MyImage_ButtonDown"
+                MouseLeftButtonUp="MyImage_ButtonUp"
+                MouseMove="MyImage_OnMouseMove"
+                MouseRightButtonDown="MyImage_MouseRightButtonDown"/>
+            </Grid>
+        </Border>
+
+        <TabControl Grid.Row="0" x:Name="TabController">
+            <TabItem Header="Raster Drawing">
+                <Grid Height="72">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <StackPanel>
+                            <RadioButton GroupName="DrawingType" Content="Line" x:Name="LineRadioButton" IsChecked="True"
+                                         Checked="DrawingType_Checked"/>
+                            <RadioButton GroupName="DrawingType" Content="Circle" x:Name="CircleRadioButton" 
+                                         Checked="DrawingType_Checked"/>
+                            <RadioButton GroupName="DrawingType" Content="AALine" x:Name="AALineRadioButton" 
+                                         Checked="DrawingType_Checked"/>
+                            <xctk:IntegerUpDown Name="LineWidth" Height="25" Margin="1" Value="0" Minimum="0" Maximum="10" 
+                                                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                ValueChanged="LineWidth_OnValueChanged"/>
+
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
